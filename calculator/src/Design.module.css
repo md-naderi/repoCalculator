@@ -1,0 +1,105 @@
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+.container {
+  /*
+    background-color: #282c34;
+    color: white;
+    padding: 40px;
+    font-family: Arial;
+    text-align: center;
+    */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: stretch;
+    height: 100vh;
+    background: #fcf3ec;
+}
+.ButtonContainer{
+      background-color : lime;
+      margin : auto ;
+      border : 1px dashed black;
+      width : 400px;
+      height : auto;
+      text-align : center;
+}
+
+.unselectedButton {
+  background-color: crimson;
+}
+.selectedButton {
+  background-color: rgb(143, 220, 20);
+}
+
+.button{
+    --offset: 10px;
+    --border-size: 2px;
+    
+    position: relative;
+    padding: 1.5em 3em;
+    appearance: none;
+    border: 0;
+    background: transparent;
+    color: #e55743;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    outline: none;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: inset 0 0 0 var(--border-size) currentColor;
+    transition: background-color 0.8s ease;
+}
+
+.button__horizental{
+    --vertical-offset: calc(var(--offset)* -1);
+    border-top: var(--border-size) solid currentColor;
+    border-bottom: var(--border-size) solid currentColor;
+}
+
+.button__vertical{
+    --horizental-offset: calc(var(--offset)* -1);
+    border-left: var(--border-size) solid currentColor;
+    border-right: var(--border-size) solid currentColor;
+}
+
+.button__horizental , .button__vertical{
+  position: absolute;
+  top : var(--horizental-offset, 0);
+  right : var(--vertical-offset, 0);
+  bottom: var(--horizental-offset, 0);
+  left: var(--vertical-offset, 0);
+  transition: transform 0.8s ease;
+  will-change: transform;
+}
+
+.button__horizental::before , .button__vertical::before {
+  content: '';
+  position: absolute;
+  border : inherit;
+}
+
+.button__horizental::before {
+  top : calc(var(--vertical-offset)- var(--border-size));
+  bottom: calc(var(--vertical-offset)- var(--border-size));
+  left: calc(var(--vertical-offset) * -1);
+  right: calc(var(--vertical-offset) * -1);
+}
+
+.button__vettical::before {
+  top: calc(var(--horizental-offset) * -1);
+  bottom: calc(var(--horizental-offset) * -1);
+  right : calc(var(--horizental-offset)- var(--border-size));
+  left: calc(var(--horizental-offset)- var(--border-size));
+}
+
+.button:hover .button__vertical {
+  transform: scaleY(0);
+}
+.button:hover .button__horizental {
+  transform: scaleX(0);
+}
