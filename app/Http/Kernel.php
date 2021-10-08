@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http;
-
+//use App\Http\Middleware\PolyValidation;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -54,6 +54,8 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
+        'one_expression_validation' => \App\Http\Middleware\OneExpressionValidation::class,
+        'two_expression_validation' => \App\Http\Middleware\TwoExpressionValidation::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,

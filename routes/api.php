@@ -1,19 +1,15 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OperationController;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
+Route::middleware('two_expression_validation')->group(function () {
+   Route::post("sum", [OperationController::class, "summation"]);
+   Route::post("sub", [OperationController::class, "subtraction"]);
+   Route::post("mul", [OperationController::class, "multiplication"]);
+});
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('one_expression_validation')->group(function () {
+   Route::post("derivative", [OperationController::class, "derivative"]);
+   Route::post("calculate", [OperationController::class, "calculation"]);
 });
