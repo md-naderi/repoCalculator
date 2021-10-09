@@ -17,20 +17,26 @@ class TwoExpressionValidation
      */
     public function handle(Request $request, Closure $next)
     {
-        // $wholeData = $request->post('poly');
-        // $firstExpression = $wholeData['first_poly'];
-        // $secondExpression = $wholeData['second_poly'];
-        // if (
-        //     Validation::isValid($firstExpression) &&
-        //     Validation::isValid($secondExpression)
-        // ) 
-        // {
+        try{
+            $wholeData = $request->post('poly');
+            $firstExpression = $wholeData['first_poly'];
+            $secondExpression = $wholeData['second_poly'];
+        }catch(\Throwable $th){
+            return response()->json([
+                "error" => $th->getMessage()
+            ]);
+        }
+        if (
+            Validation::isValid($firstExpression) &&
+            Validation::isValid($secondExpression)
+        ) 
+        {
             return $next($request);
-        //}
-        // return response()->json(
-        //     [
-        //         "error" => "invalid expression!"
-        //     ]
-        // );
+        }
+        return response()->json(
+            [
+                "error" => "invalid expression!"
+            ]
+        );
     }
 }
