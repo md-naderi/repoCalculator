@@ -5,9 +5,8 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use App\Services\Validation\Validation;
-use Error;
 
-class OneExpressionValidation
+class CalculationValidation
 {
     /**
      * Handle an incoming request.
@@ -26,7 +25,10 @@ class OneExpressionValidation
 
         try {
             $wholeData = $request->post('poly');
+            $number = $wholeData['number'];
             $firstExpression = $wholeData['first_poly'];
+            if (!is_numeric($number))
+                return $error;
         } catch (\Throwable $th) {
             return response()->json(
                 [
@@ -41,7 +43,7 @@ class OneExpressionValidation
             );
         }
 
-        
+
         if (Validation::isValid($firstExpression)) 
         {
             return $next($request);

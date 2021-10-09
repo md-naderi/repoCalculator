@@ -54,6 +54,7 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
+        'calculation_validation' => \App\Http\Middleware\CalculationValidation::class,
         'one_expression_validation' => \App\Http\Middleware\OneExpressionValidation::class,
         'two_expression_validation' => \App\Http\Middleware\TwoExpressionValidation::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
