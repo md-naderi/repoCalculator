@@ -17,6 +17,7 @@ class Analyzer implements AnalyzerInterface
 
     public function init()
     {
+        $this->checkFirstOfString($this->rawString);
         $this->makeCoefficientOne();
         $this->seperation();
         $this->analyzer();
@@ -24,6 +25,16 @@ class Analyzer implements AnalyzerInterface
         return $this->arrayOfMonos;
     }
 
+    private function checkFirstOfString($string)
+    {
+        if (
+            $string[0] != '-' &&
+            $string[0] != '+'
+        ){
+            $string = '+' . $string;
+        }
+        $this->rawString =  $string;
+    }
 
     private function makeCoefficientOne()
     {

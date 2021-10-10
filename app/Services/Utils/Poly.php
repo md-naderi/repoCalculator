@@ -75,13 +75,14 @@ class Poly implements PolyInterface, Stringable, JsonSerializable
         $this->categorizedMonos = $newCategorized;
     }
 
-    public function __toString(): string
+    
+    public function __toString() 
     {
-        $outputString = "";
-        foreach($this->categorizedMonos as &$mono){
-            $outputString .= $mono;
+        $polyString = '';
+        foreach ($this->categorizedMonos as &$mono) {
+            $polyString .= $mono;
         }
-        return $outputString;
+        return ($polyString) ? $polyString : '0' ;
     }
 
     public function addMono(MonoInterface $mono)
