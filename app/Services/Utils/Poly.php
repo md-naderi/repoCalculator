@@ -53,7 +53,7 @@ class Poly implements PolyInterface, Stringable, JsonSerializable
             $coffecentSum = 0;
             foreach ($this->categorizedMonos as $mono) {
                 if ($mono->getPower() == $power) {
-                    $coffecentSum += $mono->getCoffecent();
+                    $coffecentSum += $mono->getCoefficient();
                 }
             }
             $newCategorized[] = new Mono($coffecentSum, $power);

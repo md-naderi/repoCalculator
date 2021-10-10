@@ -11,7 +11,7 @@ class MonoOperations implements MonoOperationsInterface
     public static function negative(MonoInterface $mono): Mono
     {
         return new Mono(
-            $mono->getCoffecent() * -1,
+            $mono->getCoefficient() * -1,
             $mono->getPower()
         );
     }
@@ -19,7 +19,7 @@ class MonoOperations implements MonoOperationsInterface
     public static function derivative(MonoInterface $mono): Mono
     {
         return new Mono(
-            $mono->getCoffecent() * $mono->getPower(),
+            $mono->getCoefficient() * $mono->getPower(),
             $mono->getPower() - 1
         );
     }
@@ -27,7 +27,7 @@ class MonoOperations implements MonoOperationsInterface
     public static function multiplication(MonoInterface $firstMono, MonoInterface $secondMono): Mono
     {
         return new Mono(
-            $firstMono->getCoffecent() * $secondMono->getCoffecent(),
+            $firstMono->getCoefficient() * $secondMono->getCoefficient(),
             $firstMono->getPower() + $secondMono->getPower()
         );
     }
