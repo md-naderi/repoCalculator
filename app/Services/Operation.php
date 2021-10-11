@@ -13,7 +13,7 @@ class Operation implements OperationsInterface
     {
         $sum = 0;
         foreach ($poly->getMonos() as &$mono) {
-            $sum += $mono->getCoffecent() * ($xVariable ** $mono->getPower());
+            $sum += $mono->getCoefficient() * ($xVariable ** $mono->getPower());
         }
         return $sum;
     }
